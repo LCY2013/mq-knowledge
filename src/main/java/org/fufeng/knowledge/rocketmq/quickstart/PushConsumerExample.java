@@ -1,4 +1,4 @@
-package org.fufeng.example.quickstart;
+package org.fufeng.knowledge.rocketmq.quickstart;
 import java.io.IOException;
 import java.util.Collections;
 import org.apache.rocketmq.client.apis.ClientConfiguration;

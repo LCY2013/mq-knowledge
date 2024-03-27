@@ -1,4 +1,4 @@
-package org.fufeng.example.quickstart;
+package org.fufeng.knowledge.rocketmq.quickstart;
 import org.apache.rocketmq.client.apis.ClientConfiguration;
 import org.apache.rocketmq.client.apis.ClientConfigurationBuilder;
 import org.apache.rocketmq.client.apis.ClientException;
