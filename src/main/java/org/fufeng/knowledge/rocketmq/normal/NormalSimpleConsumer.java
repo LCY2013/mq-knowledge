@@ -10,14 +10,13 @@ import org.apache.rocketmq.client.apis.message.MessageView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 
-public class SimpleConsumer01 {
+public class NormalSimpleConsumer {
 
-    private static final Logger logger = LoggerFactory.getLogger(PushConsumer01.class);
+    private static final Logger logger = LoggerFactory.getLogger(NormalPushConsumer.class);
 
     public static void main(String[] args) {
         //消费示例二：使用SimpleConsumer消费普通消息，主动获取消息进行消费处理并提交消费结果。

@@ -1,9 +1,6 @@
 package org.fufeng.knowledge.rocketmq.normal;
 
-import org.apache.rocketmq.client.apis.ClientConfiguration;
-import org.apache.rocketmq.client.apis.ClientConfigurationBuilder;
 import org.apache.rocketmq.client.apis.ClientException;
-import org.apache.rocketmq.client.apis.ClientServiceProvider;
 import org.apache.rocketmq.client.apis.message.Message;
 import org.apache.rocketmq.client.apis.message.MessageBuilder;
 import org.apache.rocketmq.client.apis.producer.Producer;
@@ -14,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import static org.fufeng.knowledge.rocketmq.common.Common.getProducer;
 
-public class Producer01 {
-    private static final Logger logger = LoggerFactory.getLogger(PushConsumer01.class);
+public class NormalProducer {
+    private static final Logger logger = LoggerFactory.getLogger(NormalPushConsumer.class);
 
     public static void main(String[] args) throws Exception {
         Producer producer = getProducer();

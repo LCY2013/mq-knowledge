@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 
-public class PushConsumer01 {
+public class NormalPushConsumer {
 
-    private static final Logger logger = LoggerFactory.getLogger(PushConsumer01.class);
+    private static final Logger logger = LoggerFactory.getLogger(NormalPushConsumer.class);
 
     public static void main(String[] args) throws Exception {
         //消费示例一：使用PushConsumer消费普通消息，只需要在消费监听器中处理即可。
