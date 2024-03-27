@@ -35,6 +35,8 @@ public class Producer01 {
             System.out.println(sendReceipt.getMessageId());
         } catch (ClientException e) {
             logger.error("Producer01 err:", e);
+        } finally {
+            producer.close();
         }
     }
 
