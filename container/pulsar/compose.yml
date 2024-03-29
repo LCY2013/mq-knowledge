@@ -91,6 +91,8 @@ services:
         condition: service_healthy
       bookie:
         condition: service_started
+    volumes:
+      - ./data/broker/conf:/pulsar/conf
     ports:
       - "6650:6650"
       - "8080:8080"
