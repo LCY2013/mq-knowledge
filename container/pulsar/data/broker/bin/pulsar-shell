@@ -18,13 +18,25 @@
 # under the License.
 #
 
-set -x
+# need this for relative symlinks
+PRG="$0"
+while [ -h "$PRG" ] ; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG="`dirname "$PRG"`/$link"
+  fi
+done
 
-# TODO: remove these lines once grpcio doesn't need to compile from source on ARM64 platform
-ARCH=$(uname -m | sed -r 's/aarch64/arm64/g' |  awk '!/arm64/{$0="amd64"}1')
-if [ "${ARCH}" == "arm64" ]; then
-  apt update
-  apt -y install build-essential python3-dev
-fi
+BINDIR=$(dirname "$PRG")
+export PULSAR_HOME=`cd -P $BINDIR/..;pwd`
+. "$PULSAR_HOME/bin/pulsar-admin-common.sh"
+OPTS="-Dorg.jline.terminal.jansi=false $OPTS"
+OPTS="-Dpulsar.shell.working.dir=$(pwd) $OPTS"
+DEFAULT_CONFIG="-Dpulsar.shell.config.default=$PULSAR_CLIENT_CONF"
 
-pip3 install pulsar-client[all]==${PULSAR_CLIENT_PYTHON_VERSION}
+#Change to PULSAR_HOME to support relative paths
+cd "$PULSAR_HOME"
+exec $JAVA $OPTS $DEFAULT_CONFIG org.apache.pulsar.shell.PulsarShell "$@"
