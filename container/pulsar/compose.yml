@@ -86,6 +86,8 @@ services:
       - advertisedAddress=broker
       - advertisedListeners=external:pulsar://127.0.0.1:6650
       - PULSAR_MEM=-Xms512m -Xmx512m -XX:MaxDirectMemorySize=256m
+      - PULSAR_GC=-XX:+UnlockExperimentalVMOptions -XX:+UseZGC
+      - PULSAR_EXTRA_OPTS=
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -93,6 +95,7 @@ services:
         condition: service_started
     volumes:
       - ./data/broker/conf:/pulsar/conf
+      - ./data/broker/bin:/pulsar/bin
     ports:
       - "6650:6650"
       - "8080:8080"
@@ -103,6 +106,8 @@ services:
     ports:
       - "9527:9527"
       - "7750:7750"
+    networks:
+      - pulsar
     depends_on:
       - broker
     links:
