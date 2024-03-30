@@ -114,5 +114,6 @@ services:
       - broker
     volumes:
       - ./data/pulsar-manager/application.properties:/pulsar-manager/pulsar-manager/application.properties
+      - ./data/pulsar-manager/dbdata:/pulsar-manager/pulsar-manager/dbdata
     environment:
       SPRING_CONFIGURATION_FILE: /pulsar-manager/pulsar-manager/application.properties
