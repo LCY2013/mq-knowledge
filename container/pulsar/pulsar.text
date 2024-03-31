@@ -1,0 +1,31 @@
+curl -X PUT "http://192.168.3.111:7750/pulsar-manager/environments/environment" -H "accept: */*" -H "Content-Type: application/json" -H "X-XSRF-TOKEN: 2724e703-2ce6-44b0-a4d5-6ba05e0b8409" -d "{ \"bookie\": \"http://192.168.3.111:6650\", \"broker\": \"http://192.168.3.111:8080\", \"name\": \"develop\"}"
+
+
+CSRF_TOKEN=$(curl http://192.168.3.111:7750/pulsar-manager/csrf-token)
+curl \
+    -H "X-XSRF-TOKEN: $CSRF_TOKEN" \
+    -H "Cookie: XSRF-TOKEN=$CSRF_TOKEN;" \
+    -H 'Content-Type: application/json' \
+    -X PUT http://192.168.3.111:7750/pulsar-manager/users/superuser \
+    -d '{"name": "admin", "password": "apachepulsar", "description": "test", "email": "username@test.org"}'
+
+
+curl -X POST "http://192.168.3.111:7750/pulsar-manager/login" -H "accept: */*" -H "Content-Type: application/json" -H "X-XSRF-TOKEN: 2724e703-2ce6-44b0-a4d5-6ba05e0b8409" -d "{ \"username\": \"admin\", \"password\": \"apachepulsar\"}"
+
+
+http://192.168.3.111:8080
+
+
+http://192.168.3.111:6650
+
+pulsar-admin clusters create cluster-1 \
+    --url http://172.16.49.207:8080 \
+    --broker-url pulsar://172.16.49.207:6650
+
+pulsar-admin clusters update cluster-a \
+    --url http://172.16.49.207:8080 \
+    --broker-url pulsar://172.16.49.207:6650
+
+--add-opens java.base/jdk.internal.loader=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED  --add-opens java.base/sun.net=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED --add-opens java.base/jdk.internal.platform=ALL-UNNAMED --add-opens java.base/java.util.zip=ALL-UNNAMED
+    
+
