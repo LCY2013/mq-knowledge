@@ -1,5 +1,6 @@
 package org.fufeng.knowledge.pulsar.consumer;
 
+import org.apache.pulsar.client.api.BatcherBuilder;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.Schema;
@@ -16,8 +17,9 @@ public class StringProducer {
         PulsarClient pulsarClient = Client();
 
         Producer<String> producer = pulsarClient.newProducer(Schema.STRING)
-                .topic("shared-topic")
+                .topic("key-shared-topic")
                 .enableBatching(false)
+                //.batcherBuilder(BatcherBuilder.KEY_BASED) //默认的批次机制可能会破坏 Key_Shared 订阅保证的消息分发语义
                 .create();
         // 3 messages with "key-1", 3 messages with "key-2", 2 messages with "key-3" and 2 messages with "key-4"
         producer.newMessage().key("key-1").value("message-1-1").send();
