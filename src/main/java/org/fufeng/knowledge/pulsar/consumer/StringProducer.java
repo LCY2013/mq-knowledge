@@ -16,7 +16,7 @@ public class StringProducer {
         PulsarClient pulsarClient = Client();
 
         Producer<String> producer = pulsarClient.newProducer(Schema.STRING)
-                .topic("my-topic")
+                .topic("shared-topic")
                 .enableBatching(false)
                 .create();
         // 3 messages with "key-1", 3 messages with "key-2", 2 messages with "key-3" and 2 messages with "key-4"
