@@ -17,7 +17,7 @@ public class StringProducer {
         PulsarClient pulsarClient = Client();
 
         Producer<String> producer = pulsarClient.newProducer(Schema.STRING)
-                .topic("key-shared-topic")
+                .topic("shared-topic")
                 .enableBatching(false)
                 //.batcherBuilder(BatcherBuilder.KEY_BASED) //默认的批次机制可能会破坏 Key_Shared 订阅保证的消息分发语义
                 .create();
