@@ -135,7 +135,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.pulsar</groupId>
-            <artifactId>pulsar-client-admin-original</artifactId>
+            <artifactId>pulsar-client-admin</artifactId>
             <version>${pulsar.version}</version>
         </dependency>
         
