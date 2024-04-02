@@ -9,7 +9,7 @@ public class Common {
     public static final String ClusterName = "cluster-a";
 
     public static final String serviceUrl = "pulsar://localhost:6650";
-    public static final String serviceRestUrl = "pulsar://localhost:8080";
+    public static final String serviceRestUrl = "http://localhost:8080";
 
     public static PulsarClient Client() {
         try {
